@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from ckeditor.fields import RichTextField
+#from ckeditor.fields import RichTextField
 
 
 class Profile(models.Model):
@@ -21,7 +23,8 @@ class Profile(models.Model):
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     timestamp = models.DateTimeField(default=timezone.now)
-    content = models.TextField()
+    content = RichTextField(blank=True, null=True)
+    #content = models.TextField()
 
     class Meta:
         ordering = ['-timestamp']

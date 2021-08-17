@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Post
+from ckeditor.fields import RichTextField
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
@@ -15,7 +16,8 @@ class UserRegisterForm(UserCreationForm):
 
 
 class PostForm(forms.ModelForm):
-    content = forms.CharField(label='',widget=forms.Textarea(attrs={'rows':2, 'placeholder':'¿Qué está pasando?'}), required=True)
+    #content = forms.CharField(label='',widget=forms.Textarea(attrs={'rows':2, 'placeholder':'¿Qué está pasando?'}), required=True)
+    content = RichTextField()
 
     class Meta:
         model = Post

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -77,9 +78,19 @@ WSGI_APPLICATION = 'Proyecto_Django.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'de2jlpc52ev3vn',
+
+        'USER': 'fmitddvaimmcur',
+
+        'PASSWORD': '1b49fc5a5cf8fe71fca9b2b733ae3f7115b501c0f3b1b03f51b2d5a5c16254fe',
+
+        'HOST': 'ec2-34-233-114-40.compute-1.amazonaws.com',
+
+        'PORT': '5432',
     }
+
 }
 
 
@@ -130,6 +141,37 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = 'feed'
 LOGIN_URL = 'login'
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height':'200px',
+        'width':'700px',
+        # tab key conversion space number
+        'tabSpaces': 4,
+        # Toolbar Style
+        'toolbar': 'Custom',
+        # Toolbar buttons
+        'toolbar_Custom': [
+            ['Format'],
+            ['Smiley', 'CodeSnippet'],
+            ['Bold', 'Italic', 'Underline', 'RemoveFormat', 'Blockquote'],
+            ['TextColor', 'BGColor'],
+            ['Link', 'Unlink'],
+            ['NumberedList', 'BulletedList'],
+            ['Maximize']
+        ],
+        # Add Code Block Plug-ins
+        'extraPlugins': ','.join(['codesnippet']),
+        'codeSnippet_languages': {
+            'bash': 'Bash',
+            'css': 'CSS',
+            'django': 'Django',
+            'html': 'HTML',
+            'javascript': 'JavaScript',
+            'php': 'PHP',
+            'python': 'Python',
+        }
+    }
+}
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
